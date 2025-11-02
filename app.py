@@ -14,7 +14,7 @@ def upload_file():
         return jsonify({'error': 'File size exceeds the limit of 5MB.'}), 400
     try:
         # Only handle CSV files for now, can extend for Excel
-        if file.filename.endswith('.csv'):
+        if file.filename.lower().endswith('.csv'):
             df = pd.read_csv(file)
             return jsonify({'message': 'File uploaded successfully', 'data': df.head().to_dict()}), 200
         else:
