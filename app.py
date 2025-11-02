@@ -15,9 +15,9 @@ def upload_file():
     if file.filename == '':
         logging.error('No selected file')
         return jsonify({'error': 'No selected file'}), 400
-    if file.content_length > 5 * 1024 * 1024:  # Limit to 5MB
-        logging.error('File size exceeds the limit of 5MB')
-        return jsonify({'error': 'File size exceeds the limit of 5MB.'}), 400
+    if file.content_length > 10 * 1024 * 1024:  # Limit to 10MB
+        logging.error('File size exceeds the limit of 10MB')
+        return jsonify({'error': 'File size exceeds the limit of 10MB.'}), 400
     try:
         # Only handle CSV files for now, can extend for Excel
         if file.filename.lower().endswith('.csv'):
