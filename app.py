@@ -18,7 +18,7 @@ def upload_file():
             df = pd.read_csv(file)
             return jsonify({'message': 'File uploaded successfully', 'data': df.head().to_dict()}), 200
         else:
-            return jsonify({'error': 'Invalid file type. Please upload a CSV file.'}), 400
+            return jsonify({'error': 'Invalid file type. Please upload a valid CSV file (.csv).'}) , 400
     except pd.errors.EmptyDataError:
         return jsonify({'error': 'No data in the file'}), 400
     except pd.errors.ParserError:
